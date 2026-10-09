@@ -6,17 +6,41 @@
     <title>尚泓升學教室 Sun Home Academy</title>
 
     <!-- Google tag (gtag.js) - GA4 + Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-93QV21FHX4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-93QV21FHX4', {  // GA4
-        'debug_mode': true,
-        'send_page_view': true
-      });
-      gtag('config', 'AW-11156209589'); // Google Ads
-    </script>
+   
+<!-- =====================================
+     SUNHOME - Google Analytics 4
+     + Google Ads Tracking
+===================================== -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-93QV21FHX4"></script>
+    
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  // Initialize Google tag
+  gtag('js', new Date());
+
+  // Google Analytics 4
+  // Disable automatic page_view
+  gtag('config', 'G-93QV21FHX4', {
+    send_page_view: false
+  });
+
+  // Google Ads
+  gtag('config', 'AW-11156209589');
+
+  // Send GA4 page_view manually
+  gtag('event', 'page_view', {
+    send_to: 'G-93QV21FHX4',
+    page_title: document.title,
+    page_location: window.location.href
+  });
+</script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
