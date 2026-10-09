@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>尚泓升學教室 — 網站管理操作手冊</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Microsoft JhengHei','PingFang TC',sans-serif; background:#f4f6fb; color:#2d3748; line-height:1.7; }
+
+  /* Header */
+  .header { background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:48px 32px 36px; text-align:center; }
+  .header h1 { font-size:2rem; margin-bottom:8px; }
+  .header p { opacity:.85; font-size:1rem; }
+  .badge { display:inline-block; background:rgba(255,255,255,.2); border-radius:20px; padding:4px 16px; font-size:.8rem; margin-top:12px; }
+
+  /* Layout */
+  .wrapper { max-width:860px; margin:0 auto; padding:32px 20px 60px; }
+
+  /* TOC */
+  .toc { background:white; border-radius:14px; padding:28px 32px; margin-bottom:32px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
+  .toc h2 { font-size:1.1rem; color:#667eea; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .toc ol { padding-left:20px; }
+  .toc li { margin-bottom:6px; }
+  .toc a { color:#4a5568; text-decoration:none; font-size:.95rem; }
+  .toc a:hover { color:#667eea; }
+
+  /* Section card */
+  .section { background:white; border-radius:14px; padding:32px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid #f0f2ff; }
+  .section-num { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,#667eea,#764ba2); color:white; font-weight:bold; font-size:1.1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-title { font-size:1.25rem; font-weight:bold; color:#2d3748; }
+  .section-sub { font-size:.8rem; color:#667eea; margin-top:2px; }
+
+  /* Steps */
+  .steps { counter-reset:step; }
+  .step { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+  .step-num { counter-increment:step; width:28px; height:28px; border-radius:50%; background:#667eea; color:white; font-size:.85rem; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .step-num::before { content:counter(step); }
+  .step-body { flex:1; }
+  .step-body strong { display:block; margin-bottom:4px; color:#2d3748; }
+  .step-body p { color:#555; font-size:.93rem; }
+
+  /* Code / highlight */
+  code { background:#f0f2ff; border:1px solid #e2e8f0; border-radius:6px; padding:2px 8px; font-size:.88rem; color:#5a67d8; font-family:monospace; }
+  .highlight { background:#fffbeb; border-left:4px solid #f6ad55; border-radius:0 8px 8px 0; padding:12px 16px; margin:16px 0; font-size:.9rem; color:#744210; }
+  .success { background:#f0fff4; border-left:4px solid #48bb78; border-radius:0 8px 8px 0; padding:12px 16px; margin:16px 0; font-size:.9rem; color:#276749; }
+  .danger { background:#fff5f5; border-left:4px solid #fc8181; border-radius:0 8px 8px 0; padding:12px 16px; margin:16px 0; font-size:.9rem; color:#822727; }
+
+  /* Info table */
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; }
+  th { background:#f7f8ff; color:#667eea; padding:10px 14px; text-align:left; font-weight:bold; border-bottom:2px solid #e8eaff; }
+  td { padding:10px 14px; border-bottom:1px solid #f0f0f0; color:#4a5568; }
+  tr:last-child td { border-bottom:none; }
+
+  /* Screenshot mockup */
+  .mockup { background:#f7f8ff; border:1px solid #e8eaff; border-radius:10px; padding:20px; margin:16px 0; font-size:.88rem; color:#4a5568; }
+  .mockup-title { font-weight:bold; color:#667eea; margin-bottom:10px; font-size:.85rem; letter-spacing:.05em; }
+  .btn-mock { display:inline-block; background:linear-gradient(135deg,#667eea,#764ba2); color:white; border-radius:20px; padding:5px 16px; font-size:.82rem; margin:3px; }
+  .btn-mock.green { background:#48bb78; }
+  .btn-mock.red { background:#e65252; }
+  .btn-mock.gray { background:#a0aec0; }
+  .field-mock { background:white; border:1px solid #ddd; border-radius:6px; padding:6px 12px; margin:4px 0; display:block; font-size:.82rem; color:#888; width:100%; }
+
+  /* FAQ */
+  .faq-item { border:1px solid #e8eaff; border-radius:10px; margin-bottom:12px; overflow:hidden; }
+  .faq-q { background:#f7f8ff; padding:14px 18px; font-weight:bold; font-size:.93rem; color:#2d3748; display:flex; align-items:center; gap:10px; }
+  .faq-q::before { content:'Q'; background:#667eea; color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:.75rem; flex-shrink:0; }
+  .faq-a { padding:14px 18px; font-size:.9rem; color:#555; display:flex; gap:10px; align-items:flex-start; }
+  .faq-a::before { content:'A'; background:#48bb78; color:white; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:.75rem; flex-shrink:0; margin-top:1px; }
+
+  /* Footer */
+  .footer { text-align:center; color:#a0aec0; font-size:.82rem; margin-top:40px; }
+
+  @media(max-width:600px){
+    .header h1 { font-size:1.5rem; }
+    .section { padding:20px; }
+    .step { gap:10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 尚泓升學教室</h1>
+  <p>網站管理操作手冊</p>
+  <div class="badge">sunhomeacademy.github.io · v54</div>
+</div>
+
+<div class="wrapper">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 目錄</h2>
+    <ol>
+      <li><a href="#s1">第一次使用：設定雲端儲存（JSONBin）</a></li>
+      <li><a href="#s2">登入管理面板</a></li>
+      <li><a href="#s3">新增最新消息</a></li>
+      <li><a href="#s4">修改現有消息</a></li>
+      <li><a href="#s5">刪除消息</a></li>
+      <li><a href="#s6">更新全站標題與電話</a></li>
+      <li><a href="#s7">儲存並發佈</a></li>
+      <li><a href="#s8">更新 GitHub 網頁檔案</a></li>
+      <li><a href="#s9">常見問題 FAQ</a></li>
+    </ol>
+  </div>
+
+  <!-- S1 -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">第一次使用：設定雲端儲存</div>
+        <div class="section-sub">只需做一次，之後所有裝置都能同步</div>
+      </div>
+    </div>
+
+    <div class="highlight">⚠️ 這個步驟很重要！如果跳過，只有您自己的電腦看得到更新，換台裝置就消失了。</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>前往 JSONBin 免費註冊</strong>
+          <p>用瀏覽器開啟 <code>https://jsonbin.io</code>，點右上角「Sign Up」，用 Google 或 Email 免費註冊帳號。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>建立一個新的 Bin</strong>
+          <p>登入後點右上角「<strong>CREATE BIN</strong>」按鈕，在內容欄位貼上 <code>{}</code>，然後點「CREATE」儲存。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>複製 Bin ID</strong>
+          <p>建立後網址會變成 <code>https://jsonbin.io/b/<strong>這串字就是BinID</strong></code>，複製那串英數字（例如：<code>6673f9b4e41b4d34e4187abc</code>）</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>取得 Master Key</strong>
+          <p>點右上角頭像 → 「API Keys」→ 複製 <strong>Master Key</strong>（格式像 <code>$2b$10$xxxx...</code>）</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>填入管理面板</strong>
+          <p>開啟網站 → 登入管理面板 → 找「☁️ 雲端儲存設定」區塊 → 填入 Bin ID 和 Master Key → 點「💾 儲存設定」</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="success">✅ 設定完成後，任何裝置開啟網站都會自動讀取雲端最新內容！</div>
+  </div>
+
+  <!-- S2 -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">登入管理面板</div>
+        <div class="section-sub">每次更新前先登入</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>開啟網站</strong>
+          <p>用瀏覽器開啟 <code>https://sunhomeacademy.github.io/</code></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點管理按鈕</strong>
+          <p>頁面右上角有一個 <span class="btn-mock">管理網站 ⚙️</span> 按鈕，點一下。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>輸入密碼</strong>
+          <p>在彈出的登入框輸入密碼：<code>sunhome2026</code>，然後點「登入」或按 Enter。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>管理面板從右側滑出</strong>
+          <p>登入成功後右側會出現管理面板，可以開始操作。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup">
+      <div class="mockup-title">🖥️ 畫面示意</div>
+      右上角按鈕 → 彈出密碼視窗 → 輸入 <code>sunhome2026</code> → 右側面板滑出 ✅
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">新增最新消息</div>
+        <div class="section-sub">加入新的宣傳圖片與標題</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點「➕ 新增一則消息」</strong>
+          <p>在管理面板的「最新消息管理」區塊，點藍色的新增按鈕，會出現一個新的空白欄位。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>填入 Google Drive 圖片連結</strong>
+          <p>先把圖片上傳到 Google Drive → 右鍵 → 「共用」→ 設為「<strong>知道連結的任何人可以檢視</strong>」→ 複製連結 → 貼入「Google Drive 圖片連結」欄位。</p>
+          <div class="mockup">
+            <div class="mockup-title">範例連結格式</div>
+            <code>https://drive.google.com/file/d/1ABCxxx.../view?usp=sharing</code>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>填入消息標題</strong>
+          <p>在「消息標題」欄位輸入標題文字，例如：<code>暑假先修班開始報名</code></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>填入消息內容（選填）</strong>
+          <p>可以不填。如果要加說明文字，在「消息內容」欄位輸入即可。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點「💾 儲存並發佈」</strong>
+          <p>完成後點最下方的綠色按鈕儲存，雲端同步成功後所有裝置立即看到新消息。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">⚠️ Google Drive 圖片必須設為「知道連結的任何人可以檢視」，否則圖片無法在網站上顯示。</div>
+  </div>
+
+  <!-- S4 -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">修改現有消息</div>
+        <div class="section-sub">更換圖片或修改標題文字</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>登入管理面板</strong>
+          <p>依照第2節步驟登入。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>找到要修改的消息</strong>
+          <p>在「最新消息管理」區塊，每一則消息都有獨立的輸入框，找到要改的那一則。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>直接修改欄位內容</strong>
+          <p>點擊「Google Drive 圖片連結」或「消息標題」欄位，直接編輯文字即可。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點「💾 儲存並發佈」</strong>
+          <p>修改完成後，點最下方綠色按鈕發佈更新。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div>
+        <div class="section-title">刪除消息</div>
+        <div class="section-sub">移除過期的消息</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>找到要刪除的消息</strong>
+          <p>在管理面板的「最新消息管理」區塊，找到要刪除的那則消息。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點「❌ 刪除此則」</strong>
+          <p>點紅色刪除按鈕，該則消息會從列表消失。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點「💾 儲存並發佈」</strong>
+          <p>一定要點儲存，否則刪除不會生效。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="danger">⚠️ 刪除後如果沒有點「儲存並發佈」，重新整理頁面後刪除的消息會回來。</div>
+  </div>
+
+  <!-- S6 -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div>
+        <div class="section-title">更新全站標題與電話</div>
+        <div class="section-sub">修改首頁大標題或聯絡電話</div>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>欄位</th><th>說明</th><th>範例</th></tr>
+      <tr><td>首頁大標題</td><td>Hero 區的主標題文字</td><td>尚泓升學教室 Sun Home Academy</td></tr>
+      <tr><td>首頁副標題</td><td>主標題下方的小字</td><td>專業升學輔導，成就每一個夢想</td></tr>
+      <tr><td>聯絡電話</td><td>每行一個校區，格式固定</td><td>府中校(02) 22710029</td></tr>
+    </table>
+
+    <div class="highlight">⚠️ 電話欄位每行一校區，格式為：<code>府中校(02) 22710029</code>（前三個字是校區名，後面是電話）</div>
+  </div>
+
+  <!-- S7 -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div>
+        <div class="section-title">儲存並發佈</div>
+        <div class="section-sub">每次修改後的最後一步</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>確認所有修改都完成了</strong>
+          <p>新增、修改、刪除都做完後，才點儲存按鈕。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>點「💾 儲存並發佈（同步至雲端）」</strong>
+          <p>這個大綠色按鈕在管理面板最底部。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>確認成功訊息</strong>
+          <p>按鈕下方會出現訊息：</p>
+          <div class="success">✅ 已成功同步至雲端！所有裝置將看到最新內容。</div>
+          <div class="danger">⚠️ 如果出現紅色訊息，代表 JSONBin 設定有問題，請重新確認 Bin ID 和 Master Key。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8 -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div>
+        <div class="section-title">更新 GitHub 網頁檔案</div>
+        <div class="section-sub">當程式碼本身需要更新時才需要做</div>
+      </div>
+    </div>
+
+    <div class="highlight">💡 一般更新最新消息、標題、電話，<strong>不需要</strong>重新上傳 GitHub。只有在需要改版網頁結構時才需要此步驟。</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>取得新的 HTML 檔案</strong>
+          <p>下載最新版的 HTML 檔案，改名為 <code>index.html</code>。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>登入 GitHub</strong>
+          <p>開啟 <code>https://github.com/sunhomeacademy</code> → 進入 <code>sunhomeacademy.github.io</code> repository。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>上傳新檔案</strong>
+          <p>點「Add file」→「Upload files」→ 把 <code>index.html</code> 拖入 → 點「Commit changes」。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <strong>等待約 1 分鐘</strong>
+          <p>GitHub Pages 自動部署，約 1 分鐘後網站即更新。用 Ctrl+Shift+R 強制重新整理確認。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S9 FAQ -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div>
+        <div class="section-title">常見問題 FAQ</div>
+        <div class="section-sub">遇到問題先看這裡</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">儲存後其他裝置還是看不到更新？</div>
+      <div class="faq-a">請確認 JSONBin 的 Bin ID 和 Master Key 有正確填入，且點了「💾 儲存設定」。也確認「儲存並發佈」有出現綠色成功訊息。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">圖片不顯示，只看到標題？</div>
+      <div class="faq-a">Google Drive 圖片的共用設定需改為「知道連結的任何人可以檢視」，否則網站無法存取圖片。請重新設定共用權限後再試。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">忘記管理員密碼怎麼辦？</div>
+      <div class="faq-a">目前密碼為 <code>sunhome2026</code>。如需更改密碼，請聯絡網站技術人員更新 HTML 檔案。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">網頁一直在載入（轉圈圈）？</div>
+      <div class="faq-a">這通常是 JSONBin 連線逾時。若 5 秒內沒有讀取到雲端，會自動使用備用資料顯示。如果持續發生，請確認網路是否正常。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">管理面板登入後是空的？</div>
+      <div class="faq-a">這是正常情況，代表雲端還沒有儲存任何資料。請直接新增消息後點「儲存並發佈」即可。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">可以一次新增多則消息嗎？</div>
+      <div class="faq-a">可以！點多次「➕ 新增一則消息」，把所有消息都填好後，最後一次點「💾 儲存並發佈」就好，不需要每則分別儲存。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>尚泓升學教室 網站管理操作手冊 · 版本 v54 · 如有問題請聯絡網站技術人員</p>
+  </div>
+
+</div>
+</body>
+</html>
