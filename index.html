@@ -838,7 +838,32 @@
         }
         setTimeout(() => statusEl.textContent = '', 6000);
     }
-
+function renderNewsItemsInAdmin() {
+    const container = document.getElementById('newsItemsContainer');
+    container.innerHTML = '';
+    websiteData.news.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.style.cssText = 'margin-bottom:15px;padding:10px;border:1px solid #eee;border-radius:8px;';
+        const imgVal  = (item.image   || '').replace(/"/g,'&quot;');
+        const subjVal = (item.subject || '').replace(/"/g,'&quot;');
+        const contVal = (item.content || '');
+        div.innerHTML = `
+            <div class="form-group">
+                <label>Google Drive 圖片連結</label>
+                <input type="text" class="news-image-input" value="${imgVal}" placeholder="貼上 Drive 分享連結">
+            </div>
+            <div class="form-group">
+                <label>消息標題</label>
+                <input type="text" class="news-subject-input" value="${subjVal}" placeholder="例如：暑假先修班">
+            </div>
+            <div class="form-group">
+                <label>消息內容（選填）</label>
+                <textarea class="news-content-input" rows="2" placeholder="消息內文">${contVal}</textarea>
+            </div>
+            <button class="delete-btn" onclick="deleteNewsItem(${index})">❌ 刪除此則</button>`;
+        container.appendChild(div);
+    });
+}
     function addNewsItem()        { websiteData.news.push({ image: '', subject: '', content: '' }); renderNewsItemsInAdmin(); }
     function deleteNewsItem(idx)  { websiteData.news.splice(idx, 1); renderNewsItemsInAdmin(); }
     function showLoginModal()     { document.getElementById('loginModal').classList.add('show'); document.getElementById('errorMessage').textContent = ''; }
