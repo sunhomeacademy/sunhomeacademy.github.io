@@ -1,0 +1,245 @@
+{
+  "mainTitle": "尚泓升學教室 Sun Home Academy",
+  "mainSubtitle": "專業升學輔導，成就每一個夢想",
+  "phone": "府中校(02) 22710029\n站前校(02) 29697793",
+  "email": "service@sunhome.edu.tw",
+  "lastUpdated": "",
+  "news": [
+    {
+      "image": "images/news/01-banqiao-elementary.jpg",
+      "title": "板橋國小專班 招生中",
+      "badge": "招生中",
+      "cats": [
+        "primary"
+      ],
+      "desc": "專攻小學三大關鍵科目：英檢、數學、作文。10人內小班制，專為板橋國小課綱與進度設計。",
+      "points": [
+        "英檢實戰訓練，檢定不靠運氣",
+        "數學教邏輯，不刷題、不死背",
+        "作文從零到亮眼，全程實作＋批改"
+      ]
+    },
+    {
+      "image": "images/news/02-banqiao-high.jpg",
+      "title": "板橋高中專班（站前校）",
+      "badge": "火熱報名中",
+      "cats": [
+        "high"
+      ],
+      "desc": "專業小團班制、首選個別指導、專班特別優惠。站前校離板橋高中近，校門口左轉約15秒即到。",
+      "points": [
+        "專業小團班制",
+        "首選個別指導",
+        "專班特別優惠，離校近到班快"
+      ]
+    },
+    {
+      "image": "images/news/03-math-science-english-expert.jpg",
+      "title": "數理與英檢的專家",
+      "badge": "",
+      "cats": [
+        "high",
+        "junior",
+        "primary",
+        "exam"
+      ],
+      "desc": "設有高中部、國中部、國小部，提供精緻小團班與個別指導，開設國文、數學、英檢、作文、理化等課程。",
+      "points": [
+        "精緻小團班：10人高品質互動",
+        "個別指導：一對一、一對四客製化方案",
+        "查缺補漏立即改善，資深教師隨身指導"
+      ]
+    },
+    {
+      "image": "images/news/04-private-tutoring-small-class.jpg",
+      "title": "個別指導・小團班",
+      "badge": "",
+      "cats": [
+        "high",
+        "junior",
+        "primary"
+      ],
+      "desc": "國小、國中、高中皆可報名，個別指導與小團班依孩子的需求選擇，站前校、府中校就近上課。",
+      "points": [
+        "個別指導",
+        "小團班",
+        "國小・國中・高中皆適用"
+      ]
+    },
+    {
+      "image": "images/news/05-grade10-preview.jpg",
+      "title": "高一先修班",
+      "badge": "先修",
+      "cats": [
+        "high"
+      ],
+      "desc": "贏在起跑線，掌握高中關鍵。超小班教學，提早熟悉高中課程，開學就領先同儕。",
+      "points": [
+        "超小班教學，老師看得到每位學生",
+        "建立讀書策略、提升專注力",
+        "熟悉高中課程，建立基礎"
+      ]
+    },
+    {
+      "image": "images/news/06-grade7-preview-a.jpg",
+      "title": "國一先修班｜升國中暑期銜接",
+      "badge": "先修",
+      "cats": [
+        "junior"
+      ],
+      "desc": "升國中贏在起跑點。資深師資、專業小班，打好基礎，安心銜接國中生活。",
+      "points": [
+        "資深師資，掌握課綱重點",
+        "專業小班，精準照顧、因材施教",
+        "系統規劃，效率學習"
+      ]
+    },
+    {
+      "image": "images/news/07-grade7-preview-b.jpg",
+      "title": "國一先修班｜10人小班版",
+      "badge": "先修",
+      "cats": [
+        "junior"
+      ],
+      "desc": "小班制 × 高效率 × 客製化教學。10人小班、更多發問機會，提早適應國中課程。",
+      "points": [
+        "10人小班教學，老師即時指導",
+        "掌握國中先修重點，建立正確讀書方法",
+        "每位學生都被看見，追蹤學習狀況"
+      ]
+    },
+    {
+      "image": "images/news/08-junior-all-subjects.jpg",
+      "title": "國中全科班",
+      "badge": "",
+      "cats": [
+        "junior"
+      ],
+      "desc": "超小班教學，資深教師立即驗收、查缺補漏，國英數自社科科都顧到。",
+      "points": [
+        "超小班教學，學習成效卓著",
+        "資深教師立即驗收，查缺補漏",
+        "國、英、數、自、社科科皆強棒"
+      ]
+    },
+    {
+      "image": "images/news/09-reading-writing-math.jpg",
+      "title": "閱讀作文＆數學（國數成雙）",
+      "badge": "限時優惠",
+      "cats": [
+        "primary"
+      ],
+      "desc": "國小3-6年級適用。閱讀理解是國小科目的基礎，作文與數學一起打底，小團班讓每位孩子都被顧到。",
+      "points": [
+        "閱讀理解打底，開學沒煩惱",
+        "小團班教學最有效",
+        "報名對象：國小3-6年級"
+      ]
+    },
+    {
+      "image": "images/news/10-grade9-winter-mock.jpg",
+      "title": "國三寒假衝刺模考班",
+      "badge": "名額有限",
+      "cats": [
+        "junior"
+      ],
+      "desc": "國中三年級適用。針對會考內容進行完整模擬準備，提升會考戰鬥力，邁向目標頂尖高中。",
+      "points": [
+        "對象：國中三年級學生",
+        "針對會考內容，完整模擬準備",
+        "上課地點：府中校、站前校"
+      ]
+    },
+    {
+      "image": "images/news/11-summer-elementary.jpg",
+      "title": "暑期國英數加強課程",
+      "badge": "暑期",
+      "cats": [
+        "primary"
+      ],
+      "desc": "暑期七周加強課程：穩固基礎、強化實力、贏在開學前。小學生專屬10人小班，用心陪伴。",
+      "points": [
+        "國文：閱讀素養、作文表達",
+        "英檢：說聽讀寫能力提升",
+        "數學：觀念建立、邏輯應用"
+      ]
+    },
+    {
+      "image": "images/news/12-math-english-alliance.jpg",
+      "title": "數英同盟會",
+      "badge": "優惠活動",
+      "cats": [
+        "high",
+        "junior",
+        "primary",
+        "exam"
+      ],
+      "desc": "一年一度的數英同盟會活動開跑。國小、國中、高中同時報名數學與英檢課程享優惠。",
+      "points": [
+        "適用：國小、國中、高中",
+        "數學＋英檢同時報名",
+        "享同盟會專屬優惠"
+      ]
+    },
+    {
+      "image": "images/news/13-zhongshan-junior.jpg",
+      "title": "中山國中專班 招生中",
+      "badge": "招生中",
+      "cats": [
+        "junior"
+      ],
+      "desc": "專攻國中四大關鍵科目：數學、英文、國文、自然。10人內小班制，專為中山國中版本與進度設計。",
+      "points": [
+        "英文實戰訓練，考試不是靠運氣",
+        "數學教邏輯，不刷題、不死背",
+        "國文從零到亮眼，全程實作＋批改"
+      ]
+    },
+    {
+      "image": "images/news/14-gept-mock.jpg",
+      "title": "全民英檢模考專班",
+      "badge": "寒暑假限定",
+      "cats": [
+        "exam"
+      ],
+      "desc": "寒暑假特訓班：GEPT初級、中級模考，初試、複試皆有開班，是升私中、升大學的備審好證明。",
+      "points": [
+        "GEPT 初級、中級模考",
+        "初試、複試皆有開班",
+        "寒暑假限定開班"
+      ]
+    },
+    {
+      "image": "images/news/15-win-new-semester.jpg",
+      "title": "贏在新學期",
+      "badge": "",
+      "cats": [
+        "high",
+        "junior",
+        "primary"
+      ],
+      "desc": "環境單純、專注小班。經驗豐富的學區夥伴、社區內的專屬教師，隨時在旁輔助孩子的學習。",
+      "points": [
+        "高中部、國中部、國小部",
+        "數學與理科的專家",
+        "專注小班，貼近學區"
+      ]
+    },
+    {
+      "image": "images/news/16-private-school.jpg",
+      "title": "尚泓私中教室",
+      "badge": "私中升學",
+      "cats": [
+        "high",
+        "junior",
+        "primary"
+      ],
+      "desc": "從國小到高中，私中升學一路陪伴：國小考私中、私立國中會考準備、私立高中學測準備。",
+      "points": [
+        "國小考私中：私中入學考試專班",
+        "私立國中：校內課程加強 × 會考準備",
+        "私立高中：校內課程加強 × 學測準備"
+      ]
+    }
+  ]
+}
