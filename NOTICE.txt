@@ -1,0 +1,9 @@
+Copyright © 2026 sunhomeacademy All Rights Reserved.
+
+All rights reserved.
+
+No permission is granted to use, copy, reproduce, modify, distribute, publish, or otherwise exploit any content in this repository without prior written permission from the copyright owner.
+
+This notice applies to all original source code, documentation, data, and other materials contained in this repository, to the extent permitted by applicable law.
+
+Viewing or accessing this repository does not grant any license or permission to reuse its contents, except as required by applicable law or GitHub's applicable Terms of Service.
